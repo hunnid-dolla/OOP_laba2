@@ -110,8 +110,6 @@ public:
 
 int main() {
 
-    setlocale(LC_ALL, "Rus");
-
     cout << "=============================" << endl;
     cout << "СТАТИЧЕСКИЕ ОБЪЕКТЫ" << endl;
     Point p1;
