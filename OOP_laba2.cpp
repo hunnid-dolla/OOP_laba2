@@ -1,9 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 class Point {
-private:
+protected:
     int x, y;
 public:
     Point() : x(0), y(0) { cout << "Вызван конструктор Point()" << endl; }
@@ -46,6 +47,64 @@ public:
     ~Container() {
         delete circle;
         cout << "Вызван деструктор ~Container()" << endl;
+    }
+};
+
+
+// ColoredPoint — наследник Point с цветом
+class ColoredPoint : public Point {
+private:
+    string color;
+public:
+    ColoredPoint(int x, int y, string c) : Point(x, y), color(c) {
+        cout << "Конструктор ColoredPoint(int, int, string)" << endl;
+    }
+    ~ColoredPoint() {
+        cout << "Деструктор ~ColoredPoint()" << endl;
+    }
+    void print() {
+        cout << "Точка: (" << x << ", " << y << "), Цвет: " << color << endl;
+    }
+};
+
+// Rectangle — с двумя Point
+class Rectangle {
+private:
+    Point p1, p2;
+public:
+    Rectangle(Point a, Point b) : p1(a), p2(b) {
+        cout << "Конструктор Rectangle(Point, Point)" << endl;
+    }
+    ~Rectangle() {
+        cout << "Деструктор ~Rectangle()" << endl;
+    }
+    void print() {
+        cout << "Прямоугольник:\n";
+        p1.show();
+        p2.show();
+    }
+};
+
+// DynamicRectangle — с Point в динамической памяти
+class DynamicRectangle {
+private:
+    Point* p1;
+    Point* p2;
+public:
+    DynamicRectangle() {
+        p1 = new Point(1, 2);
+        p2 = new Point(5, 6);
+        cout << "Конструктор DynamicRectangle()" << endl;
+    }
+    ~DynamicRectangle() {
+        delete p1;
+        delete p2;
+        cout << "Деструктор ~DynamicRectangle()" << endl;
+    }
+    void print() {
+        cout << "Прямоугольник (динамический):\n";
+        p1->show();
+        p2->show();
     }
 };
 
@@ -94,6 +153,22 @@ int main() {
     cout << "\n=============================" << endl;
     cout << "КОМПОЗИЦИЯ ОБЪЕКТОВ (Point как член)" << endl;
     Container container;
+
+    cout << "\n=============================" << endl;
+    cout << "НАСЛЕДОВАНИЕ С ДОПОЛНЕНИЕМ (ColoredPoint)" << endl;
+    ColoredPoint cp(7, 8, "синий");
+    cp.print();
+
+    cout << "\n=============================" << endl;
+    cout << "КОМПОЗИЦИЯ ДВУХ ТОЧЕК В RECTANGLE" << endl;
+    Rectangle rect(Point(2, 3), Point(8, 6));
+    rect.print();
+
+    cout << "\n=============================" << endl;
+    cout << "КОМПОЗИЦИЯ С ДИНАМИЧЕСКОЙ ПАМЯТЬЮ (DynamicRectangle)" << endl;
+    DynamicRectangle* drect = new DynamicRectangle();
+    drect->print();
+    delete drect;
 
     cout << "\n=============================" << endl;
     cout << "КОНЕЦ ПРОГРАММЫ" << endl;
