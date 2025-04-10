@@ -97,3 +97,21 @@ public:
         this->p2.show();
     }
 };
+
+// ======= Класс ColoredPoint =======
+class ColoredPoint : public Point {  // Класс ColoredPoint, наследующий от Point
+private:
+    string color;  // Цвет точки
+public:
+    ColoredPoint(int x, int y, string c) : Point(x, y), color(c) {  // Конструктор с параметрами
+        cout << "Конструктор ColoredPoint(int, int, string)" << endl;
+    }
+
+    ~ColoredPoint() {  // Деструктор
+        cout << "Деструктор ~ColoredPoint()" << endl;
+    }
+
+    void print() {  // Метод для вывода информации о цветной точке
+        cout << "Точка: (" << this->x << ", " << this->y << "), Цвет: " << this->color << endl;
+    }
+};
