@@ -28,3 +28,25 @@ public:
         cout << "Точка: (" << this->x << ", " << this->y << ")" << endl;
     }
 };
+
+// ======= Класс Shape =======
+class Shape {  // Определение базового класса Shape
+protected:
+    string name;  // Защищенное имя фигуры
+public:
+    Shape() : name("Фигура") {  // Конструктор по умолчанию
+        cout << "Вызван конструктор Shape()" << endl;
+    }
+
+    Shape(string name) : name(name) {  // Конструктор с параметром для задания имени
+        cout << "Вызван конструктор Shape(string)" << endl;
+    }
+
+    virtual ~Shape() {  // Виртуальный деструктор
+        cout << "Вызван деструктор ~Shape()" << endl;
+    }
+
+    virtual void draw() {  // Виртуальная функция для рисования фигуры
+        cout << "Рисуем фигуру: " << this->name << endl;
+    }
+};
