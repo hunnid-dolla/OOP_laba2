@@ -50,3 +50,30 @@ public:
         cout << "Рисуем фигуру: " << this->name << endl;
     }
 };
+
+// ======= Класс Circle =======
+class Circle : public Shape {  // Класс Circle, наследующий от Shape
+private:
+    Point center;  // Центр круга
+    int radius;  // Радиус круга
+public:
+    Circle() : Shape("Круг"), center(Point()), radius(1) {  // Конструктор по умолчанию
+        cout << "Вызван конструктор Circle()" << endl;
+    }
+
+    Circle(int x, int y, int r) : Shape("Круг"), center(Point(x, y)), radius(r) {  // Конструктор с параметрами
+        cout << "Вызван конструктор Circle(int, int, int)" << endl;
+    }
+
+    Circle(const Circle& c) : Shape(c.name), center(c.center), radius(c.radius) {  // Конструктор копирования
+        cout << "Вызван конструктор копирования Circle(const Circle&)" << endl;
+    }
+
+    ~Circle() {  // Деструктор
+        cout << "Вызван деструктор ~Circle()" << endl;
+    }
+
+    void draw() override {  // Переопределенная функция для рисования круга
+        cout << "Рисуем круг с радиусом " << this->radius << endl;
+    }
+};
