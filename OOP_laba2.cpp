@@ -27,6 +27,10 @@ public:
     void show() {  // Метод для отображения координат точки
         cout << "Точка: (" << this->x << ", " << this->y << ")" << endl;
     }
+
+    // get для x и y
+    int getX() const { return x; }  // Возвращает значение x
+    int getY() const { return y; }  // Возвращает значение y
 };
 
 // ======= Класс Shape =======
@@ -74,7 +78,9 @@ public:
     }
 
     void draw() override {  // Переопределенная функция для рисования круга
-        cout << "Рисуем круг с радиусом " << this->radius << endl;
+        cout << "Рисуем круг с центром в точке ("
+            << center.getX() << ", " << center.getY()
+            << ") и радиусом " << this->radius << endl;
     }
 };
 
