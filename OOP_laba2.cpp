@@ -175,3 +175,22 @@ public:
         cout << "Деструктор ~MyBase()" << endl;
     }
 };
+
+// ======= Класс MyDeriv =======
+class MyDeriv : public MyBase {  // Класс MyDeriv, наследующий от MyBase
+private:
+    int value;  // Значение
+public:
+    MyDeriv(string n, int v) : MyBase(n), value(v) {  // Конструктор с параметрами
+        cout << "MyDeriv(string, int) — value: " << value << endl;
+    }
+
+    // Переопределение виртуальной функции hello()
+    void hello() override {  // Переопределение функции для вывода приветствия с дополнительными данными
+        cout << "Привет из MyDeriv! name: " << this->name << ", value: " << this->value << endl;
+    }
+
+    ~MyDeriv() {  // Деструктор
+        cout << "Деструктор ~MyDeriv()" << endl;
+    }
+};
