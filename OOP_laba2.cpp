@@ -156,3 +156,22 @@ public:
         this->p2->show();  // Отображение второй точки
     }
 };
+
+// ======= Класс MyBase =======
+class MyBase {  // Базовый класс MyBase
+protected:
+    string name;  // Имя
+public:
+    MyBase(string n) : name(n) {  // Конструктор с параметром для инициализации имени
+        cout << "MyBase(string) — name: " << name << endl;
+    }
+
+    // Объявление виртуальной функции hello()
+    virtual void hello() {  // Виртуальная функция для вывода приветствия
+        cout << "Привет из MyBase!" << endl;
+    }
+
+    virtual ~MyBase() {  // Виртуальный деструктор
+        cout << "Деструктор ~MyBase()" << endl;
+    }
+};
