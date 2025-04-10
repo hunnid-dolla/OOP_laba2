@@ -77,3 +77,23 @@ public:
         cout << "Рисуем круг с радиусом " << this->radius << endl;
     }
 };
+
+// ======= Класс Rectangle =======
+class Rectangle : public Shape {  // Класс Rectangle, наследующий от Shape
+private:
+    Point p1, p2;  // Два угла прямоугольника
+public:
+    Rectangle(Point a, Point b) : Shape("Прямоугольник"), p1(a), p2(b) {  // Конструктор с параметрами
+        cout << "Конструктор Rectangle(Point, Point)" << endl;
+    }
+
+    ~Rectangle() {  // Деструктор
+        cout << "Деструктор ~Rectangle()" << endl;
+    }
+
+    void draw() override {  // Переопределенная функция для рисования прямоугольника
+        cout << "Рисуем прямоугольник:\n";
+        this->p1.show();
+        this->p2.show();
+    }
+};
