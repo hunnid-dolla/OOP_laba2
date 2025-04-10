@@ -115,3 +115,19 @@ public:
         cout << "Точка: (" << this->x << ", " << this->y << "), Цвет: " << this->color << endl;
     }
 };
+
+// ======= Класс Container =======
+class Container {  // Класс Container
+private:
+    Point point;  // Точка
+    Circle* circle;  // Указатель на объект Circle
+public:
+    Container() : point(0, 0), circle(new Circle(5, 5, 3)) {  // Конструктор
+        cout << "Вызван конструктор Container()" << endl;
+    }
+
+    ~Container() {  // Деструктор
+        delete this->circle;  // Удаление объекта Circle
+        cout << "Вызван деструктор ~Container()" << endl;
+    }
+};
