@@ -131,3 +131,28 @@ public:
         cout << "Вызван деструктор ~Container()" << endl;
     }
 };
+
+// ======= Класс DynamicRectangle =======
+class DynamicRectangle {  // Класс DynamicRectangle
+private:
+    Point* p1;  // Указатель на первую точку
+    Point* p2;  // Указатель на вторую точку
+public:
+    DynamicRectangle() {  // Конструктор
+        this->p1 = new Point(1, 2);  // Выделение памяти для p1
+        this->p2 = new Point(5, 6);  // Выделение памяти для p2
+        cout << "Конструктор DynamicRectangle()" << endl;
+    }
+
+    ~DynamicRectangle() {  // Деструктор
+        delete this->p1;  // Освобождение памяти для p1
+        delete this->p2;  // Освобождение памяти для p2
+        cout << "Деструктор ~DynamicRectangle()" << endl;
+    }
+
+    void print() {  // Метод для отображения прямоугольника
+        cout << "Прямоугольник (динамический):\n";
+        this->p1->show();  // Отображение первой точки
+        this->p2->show();  // Отображение второй точки
+    }
+};
